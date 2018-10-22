@@ -5,56 +5,119 @@ import com.taxonic.carml.rdf_mapper.annotations.RdfProperty;
 public class PostalAddress {
 
     private String streetAddress;
-    private String addressLocality;
-    private String addressRegion;
+
+    private String locality;
+
     private String postalCode;
 
-    static final String SCHEMAORG = "http://schema.org/";
-    static final String SCHEMAORG_STREETADDRESS = SCHEMAORG + "streetAddress";
-    static final String SCHEMAORG_ADDRESSLOCALITY = SCHEMAORG + "addressLocality";
-    static final String SCHEMAORG_ADDRESSREGION = SCHEMAORG + "addressRegion";
-    static final String SCHEMAORG_POSTALCODE = SCHEMAORG + "postalCode";
+    private String region;
 
-    @RdfProperty("http://www.w3.org/2006/vcard/ns#street-address")
-    public String getStreetAddress() {
+    private String countryName;
+
+    /**
+     * Gets the streetAddress.
+     *
+     * @return streetAddress
+     */
+    public String getStreetAddress()
+    {
         return streetAddress;
     }
 
-    public void setStreetAddress(String streetAddress) {
+    /**
+     * Sets the streetAddress.
+     *
+     * @param streetAddress the streetAddress
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#street-address")
+    public void setStreetAddress(String streetAddress)
+    {
         this.streetAddress = streetAddress;
     }
 
-    @RdfProperty(SCHEMAORG_ADDRESSLOCALITY)
-    public String getAddressLocality() {
-        return addressLocality;
+    /**
+     * Gets the locality.
+     *
+     * @return locality
+     */
+    public String getLocality()
+    {
+        return locality;
     }
 
-    public void setAddressLocality(String addressLocality) {
-        this.addressLocality = addressLocality;
+    /**
+     * Sets the locality.
+     *
+     * @param locality the locality
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#locality")
+    public void setLocality(String locality)
+    {
+        this.locality = locality;
     }
 
-    @RdfProperty(SCHEMAORG_ADDRESSREGION)
-    public String getAddressRegion() {
-        return addressRegion;
-    }
-
-    public void setAddressRegion(String addressRegion) {
-        this.addressRegion = addressRegion;
-    }
-
-    @RdfProperty(SCHEMAORG_POSTALCODE)
-    public String getPostalCode() {
+    /**
+     * Gets the postalCode.
+     *
+     * @return postalCode
+     */
+    public String getPostalCode()
+    {
         return postalCode;
     }
 
-    public void setPostalCode(String postalCode) {
+    /**
+     * Sets the postalCode.
+     *
+     * @param postalCode the postalCode
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#postal-code")
+    public void setPostalCode(String postalCode)
+    {
         this.postalCode = postalCode;
     }
 
-    @Override
-    public String toString() {
-        return "PostalAddress [streetAddress=" + streetAddress + ", addressLocality="
-                + addressLocality + ", addressRegion=" + addressRegion + ", postalCode="
-                + postalCode + "]";
+    /**
+     * Gets the region.
+     *
+     * @return region
+     */
+    public String getRegion()
+    {
+        return region;
     }
+
+    /**
+     * Sets the region.
+     *
+     * @param region the region
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#region")
+    public void setRegion(String region)
+    {
+        this.region = region;
+    }
+
+    /**
+     * Gets the countryName.
+     *
+     * @return countryName
+     */
+    public String getCountryName()
+    {
+        return countryName;
+    }
+
+    /**
+     * Sets the countryName.
+     *
+     * @param countryName the countryName
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#country-name")
+    public void setCountryName(String countryName)
+    {
+        this.countryName = countryName;
+    }
+
+
 }

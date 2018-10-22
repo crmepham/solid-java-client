@@ -25,10 +25,20 @@ import java.util.function.Function;
 public class SolidClient {
 
     /**
+     * The person uri.
+     */
+    private final static String PERSON_URI = "http://schema.org/Person";
+
+    /**
      * The HTTP Client used to make HTTP requests
      * to the POD.
      */
     private final HttpClient httpClient;
+
+    /**
+     * The person associated with this Solid client account.
+     */
+    private Person me;
 
     /**
      * The constructor.
@@ -60,20 +70,22 @@ public class SolidClient {
 
         System.out.println(body);
 
-        ValueFactory VF = SimpleValueFactory.getInstance();
+        final ValueFactory VF = SimpleValueFactory.getInstance();
 
-        Model model = IoUtils.parse(new ByteArrayInputStream(body.getBytes()), RDFFormat.TURTLE);
+        final Model model = IoUtils.parse(new ByteArrayInputStream(body.getBytes()), RDFFormat.TURTLE);
 
-        Function<Model, Set<Resource>> selectPersons =
+        final Function<Model, Set<Resource>> selectPersons =
                 m ->
-                        ImmutableSet.copyOf(
-                                model
-                                        .filter(null, RDF.TYPE, VF.createIRI("http://schema.org/Person"))
-                                        .subjects()
-                        );
+                    ImmutableSet.copyOf(
+                        model
+                            .filter(null, RDF.TYPE, VF.createIRI(PERSON_URI))
+                            .subjects()
+                    );
 
-        Set<Person> people = RdfObjectLoader.load(selectPersons, Person.class, model);
+        final Person me = RdfObjectLoader.load(selectPersons, Person.class, model).stream().findFirst().get();
 
-        return null;
+        this.me = me;
+
+        return me;
     }
 }

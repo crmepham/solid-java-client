@@ -7,104 +7,227 @@ import java.util.Set;
 
 public class Person {
 
+    private String name;
     private Set<String> names;
-    private String gender;
-    private String jobTitle;
-    private PostalAddress address;
-    private String telephone;
-    private String email;
-    private Set<String> colleagues;
+    private Set<PostalAddress> addresses;
+    private Set<Telephone> telephoneNumbers;
+    private Set<Email> emails;
     private Set<Person> knows;
+    private String note;
+    private String role;
+    private String organization;
+    private String vcard;
 
-    static final String SCHEMAORG = "http://schema.org/";
-    static final String SCHEMAORG_NAME = SCHEMAORG + "name";
-    static final String SCHEMAORG_GENDER = SCHEMAORG + "gender";
-    static final String SCHEMAORG_JOB_TITLE = SCHEMAORG + "jobTitle";
-    static final String SCHEMAORG_ADDRESS = SCHEMAORG + "address";
-    static final String SCHEMAORG_TELEPHONE = SCHEMAORG + "telephone";
-    static final String SCHEMAORG_EMAIL = SCHEMAORG + "email";
-    static final String SCHEMAORG_COLLEAGUES = SCHEMAORG + "colleagues";
-    static final String SCHEMAORG_KNOWS = SCHEMAORG + "knows";
-
-    @RdfProperty("http://www.w3.org/2006/vcard/ns#fn")
-    public Set<String> getNames() {
+    /**
+     * Gets the names.
+     *
+     * @return names
+     */
+    public Set<String> getNames()
+    {
         return names;
     }
 
-    public void setNames(Set<String> names) {
+    /**
+     * Sets the names.
+     *
+     * @param names the names
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#fn")
+    public void setNames(Set<String> names)
+    {
         this.names = names;
     }
 
-    @RdfProperty(SCHEMAORG_GENDER)
-    public String getGender() {
-        return gender;
+    /**
+     * Gets the addresses.
+     *
+     * @return addresses
+     */
+    public Set<PostalAddress> getAddresses()
+    {
+        return addresses;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    @RdfProperty(SCHEMAORG_JOB_TITLE)
-    public String getJobTitle() {
-        return jobTitle;
-    }
-
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
-    }
-
+    /**
+     * Sets the addresses.
+     *
+     * @param addresses the addresses
+     */
     @RdfProperty("http://www.w3.org/2006/vcard/ns#hasAddress")
-    @RdfType(PostalAddress.class)
-    public PostalAddress getAddress() {
-        return address;
+    public void setAddresses(Set<PostalAddress> addresses)
+    {
+        this.addresses = addresses;
     }
 
-    public void setAddress(PostalAddress address) {
-        this.address = address;
+    /**
+     * Gets the telephones.
+     *
+     * @return telephones
+     */
+    public Set<Telephone> getTelephoneNumbers()
+    {
+        return telephoneNumbers;
     }
 
-    @RdfProperty(SCHEMAORG_TELEPHONE)
-    public String getTelephone() {
-        return telephone;
+    /**
+     * Sets the telephones.
+     *
+     * @param telephoneNumbers the telephoneNumbers
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#hasTelephone")
+    @RdfType(Telephone.class)
+    public void setTelephoneNumbers(Set<Telephone> telephoneNumbers)
+    {
+        this.telephoneNumbers = telephoneNumbers;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    /**
+     * Gets the note.
+     *
+     * @return note
+     */
+    public String getNote()
+    {
+        return note;
     }
 
-    @RdfProperty(SCHEMAORG_EMAIL)
-    public String getEmail() {
-        return email;
+    /**
+     * Sets the note.
+     *
+     * @param note the note
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#note")
+    public void setNote(String note)
+    {
+        this.note = note;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    /**
+     * Gets the organization.
+     *
+     * @return organization
+     */
+    public String getOrganization()
+    {
+        return organization;
     }
 
-    @RdfProperty(SCHEMAORG_COLLEAGUES)
-    public Set<String> getColleagues() {
-        return colleagues;
+    /**
+     * Sets the organization.
+     *
+     * @param organization the organization
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#organization-name")
+    public void setOrganization(String organization)
+    {
+        this.organization = organization;
     }
 
-    public void setColleagues(Set<String> colleagues) {
-        this.colleagues = colleagues;
+    /**
+     * Gets the vcard.
+     *
+     * @return vcard
+     */
+    public String getVcard()
+    {
+        return vcard;
     }
 
-    @RdfProperty(SCHEMAORG_KNOWS)
-    @RdfType(Person.class)
-    public Set<Person> getKnows() {
+    /**
+     * Sets the vcard.
+     *
+     * @param vcard the vcard
+     */
+    @RdfProperty("http://xmlns.com/foaf/0.1/vcard")
+    public void setVcard(String vcard)
+    {
+        this.vcard = vcard;
+    }
+
+    /**
+     * Gets the role.
+     *
+     * @return role
+     */
+    public String getRole()
+    {
+        return role;
+    }
+
+    /**
+     * Sets the role.
+     *
+     * @param role the role
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#role")
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
+
+    /**
+     * Gets the name.
+     *
+     * @return name
+     */
+    public String getName()
+    {
+        return name;
+    }
+
+    /**
+     * Sets the name.
+     *
+     * @param name the name
+     */
+    @RdfProperty("http://xmlns.com/foaf/0.1/name")
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    /**
+     * Gets the emails.
+     *
+     * @return emails
+     */
+    public Set<Email> getEmails()
+    {
+        return emails;
+    }
+
+    /**
+     * Sets the emails.
+     *
+     * @param emails the emails
+     */
+    @RdfProperty("http://www.w3.org/2006/vcard/ns#hasEmail")
+    @RdfType(Email.class)
+    public void setEmails(Set<Email> emails)
+    {
+        this.emails = emails;
+    }
+
+    /**
+     * Gets the knows.
+     *
+     * @return knows
+     */
+    public Set<Person> getKnows()
+    {
         return knows;
     }
 
-    public void setKnows(Set<Person> knows) {
+    /**
+     * Sets the knows.
+     *
+     * @param knows the knows
+     */
+    @RdfProperty("http://xmlns.com/foaf/0.1/knows")
+    @RdfType(Person.class)
+    public void setKnows(Set<Person> knows)
+    {
         this.knows = knows;
     }
-
-    @Override
-    public String toString() {
-        return "Person [names=" + names + ", gender=" + gender + ", jobTitle=" + jobTitle
-                + ", address=" + address + ", telephone=" + telephone + ", email=" + email
-                + ", colleagues=" + colleagues + ", knows=" + knows + "]";
-    }
-
 }

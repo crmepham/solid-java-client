@@ -68,8 +68,6 @@ public class SolidClient {
 
         final String body = httpClient.me();
 
-        System.out.println(body);
-
         final ValueFactory VF = SimpleValueFactory.getInstance();
 
         final Model model = IoUtils.parse(new ByteArrayInputStream(body.getBytes()), RDFFormat.TURTLE);
